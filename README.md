@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo/logo-motorhub.jpeg" alt="Logo MotorHub" width="280">
+  <img src="assets/logo/Logo MotorHub.jpeg" alt="Logo MotorHub" width="280">
 </p>
 
 <h1 align="center">MotorHub</h1>
