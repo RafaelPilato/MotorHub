@@ -1,0 +1,14 @@
+# Dependências
+node_modules/
+
+# Banco de dados local e arquivos enviados (gerados na execução)
+backend/data/
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Build e variáveis de ambiente
+dist/
+.env
+
+# Sistema
+.DS_Store

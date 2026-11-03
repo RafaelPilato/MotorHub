@@ -1,0 +1,12 @@
+{
+  "name": "motorhub",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MotorHub – prontuário digital do veículo (Projeto Integrador, Design Profissional)",
+  "scripts": {
+    "install:all": "npm --prefix backend install",
+    "seed": "npm --prefix backend run seed",
+    "dev": "npm --prefix backend run dev",
+    "start": "npm --prefix backend start"
+  }
+}
