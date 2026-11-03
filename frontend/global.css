@@ -1,0 +1,336 @@
+@import './tema.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: #000;
+  color: var(--texto);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+/* ---------- Estrutura do app (largura de celular, centralizada no computador) ---------- */
+.app {
+  position: relative;
+  width: 100%;
+  max-width: var(--largura-app);
+  min-height: 100dvh;
+  margin: 0 auto;
+  background: var(--bg);
+  box-shadow: 0 0 0 1px var(--borda);
+}
+
+.conteudo {
+  padding: calc(16px + env(safe-area-inset-top)) 16px 24px;
+}
+
+.conteudo--com-abas {
+  padding-bottom: calc(var(--altura-nav) + 96px + env(safe-area-inset-bottom));
+}
+
+/* ---------- Marca ---------- */
+.wordmark {
+  font-size: 1.6rem;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.5px;
+}
+.wordmark span {
+  color: var(--vermelho);
+}
+
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.topo__slogan {
+  color: var(--texto-suave);
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* ---------- Cartões e listas ---------- */
+.cartao {
+  background: var(--superficie);
+  border-radius: var(--raio);
+  padding: 16px;
+}
+
+.cartao--veiculo {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #2c0a09 0%, var(--superficie) 70%);
+  border: 1px solid rgba(225, 6, 0, 0.35);
+}
+.cartao--veiculo::after {
+  content: '';
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(225, 6, 0, 0.35), transparent 70%);
+  pointer-events: none;
+}
+.veiculo__nome {
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+.veiculo__linha {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.placa {
+  padding: 2px 10px;
+  border: 1px solid var(--texto-suave);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.veiculo__km {
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+}
+
+.rotulo {
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+}
+.valor-grande {
+  margin-top: 4px;
+  font-size: 1.9rem;
+  font-weight: 800;
+}
+.cartao--gasto {
+  margin-bottom: 8px;
+}
+
+.secao {
+  margin-top: 24px;
+}
+.secao__titulo {
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--superficie);
+  border-radius: var(--raio);
+}
+a.item:active {
+  background: var(--superficie-2);
+}
+.item__titulo {
+  font-weight: 600;
+}
+.item__detalhe {
+  margin-top: 2px;
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+}
+.item__valor {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* ---------- Selos de status ---------- */
+.selo {
+  flex-shrink: 0;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.selo--ok {
+  background: rgba(48, 209, 88, 0.16);
+  color: var(--verde);
+}
+.selo--em_breve {
+  background: rgba(255, 176, 32, 0.16);
+  color: var(--amarelo);
+}
+.selo--atencao {
+  background: var(--vermelho-suave);
+  color: #ff5a52;
+}
+.selo--vencido {
+  background: var(--vermelho);
+  color: #fff;
+}
+
+/* ---------- Botões ---------- */
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 52px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--vermelho);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.botao:active {
+  background: var(--vermelho-escuro);
+}
+.botao--contorno {
+  background: transparent;
+  border: 1.5px solid var(--vermelho);
+  color: var(--vermelho);
+}
+.botao--bloco {
+  width: 100%;
+}
+
+.fab {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--altura-nav) + 16px + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  z-index: 20;
+  box-shadow: 0 8px 24px rgba(225, 6, 0, 0.45);
+}
+
+/* ---------- Navegação inferior ---------- */
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  display: flex;
+  width: 100%;
+  max-width: var(--largura-app);
+  padding-bottom: env(safe-area-inset-bottom);
+  background: rgba(20, 20, 22, 0.96);
+  border-top: 1px solid var(--borda);
+  backdrop-filter: blur(10px);
+}
+.nav__link {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: var(--altura-nav);
+  color: var(--texto-suave);
+  font-size: 0.7rem;
+}
+.nav__link svg {
+  width: 24px;
+  height: 24px;
+}
+.nav__link.ativo {
+  color: var(--vermelho);
+  font-weight: 700;
+}
+
+/* ---------- Estados (carregando, erro, vazio) ---------- */
+.estado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 48px 16px;
+  text-align: center;
+}
+.estado__texto {
+  color: var(--texto-suave);
+}
+.estado__logo {
+  width: 160px;
+  height: 160px;
+  border-radius: 24px;
+  object-fit: cover;
+}
+.estado__titulo {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+.vazio {
+  padding: 18px 16px;
+  color: var(--texto-suave);
+  background: var(--superficie);
+  border-radius: var(--raio);
+  font-size: 0.9rem;
+}
+
+.carregando {
+  width: 36px;
+  height: 36px;
+  border: 4px solid var(--superficie-2);
+  border-top-color: var(--vermelho);
+  border-radius: 50%;
+  animation: girar 0.8s linear infinite;
+}
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- Telas ainda em construção ---------- */
+.titulo-tela {
+  margin-bottom: 8px;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
