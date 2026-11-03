@@ -1,4 +1,6 @@
 // Configuração do Express e registro das rotas.
+const fs = require('fs');
+const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const db = require('./db/database');
@@ -35,6 +37,23 @@ app.use('/api', historicoRouter);
 // Rota inexistente dentro da API.
 app.use('/api', (req, res) => {
   res.status(404).json({ erro: 'Rota não encontrada' });
+});
+
+// Interface web já compilada (npm run build). Com ela, o back-end serve o site inteiro
+// na mesma porta, o que simplifica a demonstração. Sem build, só a API responde.
+const PASTA_SITE = path.join(__dirname, '..', '..', 'frontend', 'dist');
+const PAGINA_INICIAL = path.join(PASTA_SITE, 'index.html');
+const arquivosDoSite = express.static(PASTA_SITE);
+
+app.use((req, res, next) => {
+  const ehApiOuFoto = /^\/(api|uploads)(\/|$)/.test(req.path);
+  if ((req.method !== 'GET' && req.method !== 'HEAD') || ehApiOuFoto) return next();
+  arquivosDoSite(req, res, (err) => {
+    if (err) return next(err);
+    // Qualquer outro endereço (ex.: /gastos) devolve a página inicial; o React cuida da rota.
+    if (fs.existsSync(PAGINA_INICIAL)) return res.sendFile(PAGINA_INICIAL);
+    return next();
+  });
 });
 
 // Tratamento de erros: erros esperados (ErroHttp) viram JSON com o código certo.

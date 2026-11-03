@@ -19,6 +19,8 @@ Teste: abra `http://localhost:3001/api/saude`. A resposta esperada é:
 { "status": "ok", "banco": "conectado", "veiculos": 1 }
 ```
 
+Se o site já tiver sido compilado (`npm run build` na raiz), o back-end também serve a interface em `http://localhost:3001`.
+
 O arquivo do banco é criado em `backend/data/motorhub.db` e não vai para o Git.
 
 ## Estrutura
