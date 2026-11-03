@@ -1,0 +1,22 @@
+/* MotorHub · tema (cores e medidas tiradas da logo: preto, vermelho e branco) */
+:root {
+  --bg: #0b0b0b;
+  --superficie: #1c1c1e;
+  --superficie-2: #26262a;
+  --borda: #2e2e33;
+
+  --vermelho: #e10600;
+  --vermelho-escuro: #b30000;
+  --vermelho-suave: rgba(225, 6, 0, 0.14);
+
+  --texto: #ffffff;
+  --texto-suave: #a1a1a8;
+
+  --verde: #30d158;
+  --amarelo: #ffb020;
+
+  --raio: 16px;
+  --raio-pequeno: 10px;
+  --largura-app: 480px;
+  --altura-nav: 64px;
+}
