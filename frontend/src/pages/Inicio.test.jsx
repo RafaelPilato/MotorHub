@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import App from '../App';
 import { VeiculoProvider } from '../context/VeiculoContext';
-import { RESUMO, VEICULO, simularApi } from '../test/api-falsa';
+import { OPCOES, RESUMO, VEICULO, simularApi } from '../test/api-falsa';
 
 function abrir(rota = '/') {
   return render(
@@ -90,7 +90,7 @@ describe('navegação', () => {
   });
 
   it('telas de formulário não mostram a barra de navegação', async () => {
-    simularApi({ '/api/veiculos': [VEICULO] });
+    simularApi({ '/api/veiculos': [VEICULO], '/api/opcoes': OPCOES });
     abrir('/servico/novo');
 
     expect(await screen.findByRole('heading', { name: 'Novo serviço' })).toBeInTheDocument();
