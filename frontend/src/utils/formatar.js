@@ -46,3 +46,40 @@ export function textoVencimento(item) {
   }
   return `Faltam ${km(item.km_restantes)} ou ${plural(item.dias_restantes, 'dia', 'dias')}`;
 }
+
+export const MESES = [
+  'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
+  'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro',
+];
+
+// 10 -> "outubro"
+export const nomeMes = (numero) => MESES[numero - 1] ?? '';
+
+// 12.1 -> "12,1%"
+export function percentual(valor) {
+  return `${Number(valor).toLocaleString('pt-BR', { maximumFractionDigits: 1 })}%`;
+}
+
+// Data de hoje (AAAA-MM-DD) no fuso do usuário, para preencher campos de data.
+export function hojeLocal() {
+  const d = new Date();
+  const mes = String(d.getMonth() + 1).padStart(2, '0');
+  const dia = String(d.getDate()).padStart(2, '0');
+  return `${d.getFullYear()}-${mes}-${dia}`;
+}
+
+// Compara com o período anterior: "12,1% a mais que o ano anterior".
+export function textoVariacao(variacao, periodo) {
+  if (variacao === null || variacao === undefined) return null;
+  const referencia = periodo === 'mensal' ? 'mês anterior' : 'ano anterior';
+  if (variacao === 0) return `Igual ao ${referencia}`;
+  return `${percentual(Math.abs(variacao))} ${variacao > 0 ? 'a mais' : 'a menos'} que o ${referencia}`;
+}
+
+// Selo e rótulo de cada situação de documento (a API devolve pago, em_dia, atencao ou atrasado).
+export const SELO_DOCUMENTO = {
+  pago: { status: 'ok', rotulo: 'Pago' },
+  em_dia: { status: 'ok', rotulo: 'Em dia' },
+  atencao: { status: 'atencao', rotulo: 'Atenção' },
+  atrasado: { status: 'vencido', rotulo: 'Vencido' },
+};

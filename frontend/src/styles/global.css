@@ -334,3 +334,424 @@ a.item:active {
   font-size: 1.6rem;
   font-weight: 800;
 }
+
+/* ======================================================================
+   Telas de formulário, gastos, alertas, documentos e histórico
+   ====================================================================== */
+
+.titulo-tela {
+  margin-bottom: 12px;
+}
+.subtitulo {
+  margin: -4px 0 16px;
+  font-size: 0.9rem;
+}
+
+/* ---------- Cabeçalho com seta de voltar ---------- */
+.cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.cabecalho__voltar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--superficie);
+}
+.cabecalho__titulo {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+.cabecalho__sub {
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+}
+
+/* ---------- Formulários ---------- */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.campo {
+  display: block;
+  padding: 10px 14px;
+  background: var(--superficie);
+  border: 1.5px solid transparent;
+  border-radius: var(--raio);
+}
+.campo:focus-within {
+  border-color: var(--vermelho);
+}
+.campo--erro {
+  border-color: #ff5a52;
+}
+.campo__rotulo {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--texto-suave);
+  font-size: 0.78rem;
+}
+.campo__titulo {
+  margin-bottom: 8px;
+}
+.campo input,
+.campo select {
+  width: 100%;
+  padding: 4px 0;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: var(--texto);
+  font: inherit;
+  font-size: 1.05rem;
+  color-scheme: dark;
+}
+.campo select option {
+  background: var(--superficie);
+}
+.campo__erro {
+  margin-top: 4px;
+  color: #ff5a52;
+  font-size: 0.82rem;
+}
+.formulario__erro {
+  padding: 10px 14px;
+  background: var(--vermelho-suave);
+  border-radius: var(--raio-pequeno);
+  color: #ff8a84;
+  font-size: 0.9rem;
+}
+.campo-link {
+  width: 100%;
+  padding: 12px;
+  background: var(--bg);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-pequeno);
+  color: var(--texto);
+  font: inherit;
+  font-size: 0.85rem;
+}
+.botao:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+.botao--pequeno {
+  min-height: 40px;
+  padding: 0 18px;
+  font-size: 0.9rem;
+}
+
+/* ---------- Chips ---------- */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  padding: 9px 16px;
+  background: var(--superficie);
+  border: 1.5px solid var(--borda);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.chip[aria-pressed='true'] {
+  background: var(--vermelho);
+  border-color: var(--vermelho);
+  font-weight: 700;
+}
+
+/* ---------- Foto da nota ---------- */
+.foto-previa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background: var(--superficie);
+  border-radius: var(--raio);
+}
+.foto-previa img {
+  max-width: 100%;
+  max-height: 220px;
+  border-radius: var(--raio-pequeno);
+}
+
+/* ---------- Links e botões de texto ---------- */
+.link {
+  padding: 4px 0;
+  background: none;
+  border: 0;
+  color: var(--vermelho);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.link--perigo {
+  color: var(--texto-suave);
+}
+.link:disabled {
+  opacity: 0.5;
+}
+.veiculo__editar {
+  margin-left: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Seletor Mensal / Anual ---------- */
+.segmentado {
+  display: flex;
+  padding: 4px;
+  background: var(--superficie);
+  border-radius: 999px;
+}
+.segmentado button {
+  flex: 1;
+  min-height: 40px;
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  color: var(--texto-suave);
+  font-weight: 600;
+  cursor: pointer;
+}
+.segmentado button[aria-pressed='true'] {
+  background: var(--vermelho);
+  color: #fff;
+}
+.filtros {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+}
+.filtros select {
+  flex: 1;
+  min-height: 44px;
+  padding: 0 12px;
+  background: var(--superficie);
+  border: 1.5px solid var(--borda);
+  border-radius: var(--raio-pequeno);
+  color: var(--texto);
+  font: inherit;
+  text-transform: capitalize;
+  color-scheme: dark;
+}
+
+/* ---------- Gráfico de barras ---------- */
+.grafico {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+}
+.grafico__coluna {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.grafico__area {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 120px;
+}
+.grafico__barra {
+  width: 100%;
+  min-height: 3px;
+  background: var(--vermelho);
+  border-radius: 6px 6px 2px 2px;
+}
+.grafico__barra--apagada {
+  background: var(--superficie-2);
+}
+.grafico__mes {
+  color: var(--texto-suave);
+  font-size: 0.65rem;
+}
+
+/* ---------- Itens em coluna e barras de progresso ---------- */
+.item--coluna {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+}
+.item__linha {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.barra {
+  height: 8px;
+  overflow: hidden;
+  background: var(--superficie-2);
+  border-radius: 999px;
+}
+.barra__preenchimento {
+  height: 100%;
+  border-radius: inherit;
+  transition: width 0.3s ease;
+}
+.barra--ok {
+  background: var(--verde);
+}
+.barra--em_breve {
+  background: var(--amarelo);
+}
+.barra--atencao {
+  background: var(--vermelho);
+}
+.barra--vencido {
+  background: var(--vermelho-escuro);
+}
+
+/* ---------- Alertas e documentos ---------- */
+.alerta {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+.alerta__confirmar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.alerta__botoes {
+  display: flex;
+  gap: 8px;
+}
+.alerta__botoes .botao {
+  flex: 1;
+}
+
+/* ---------- Interruptor ---------- */
+.interruptor {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.interruptor input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.interruptor__trilho {
+  position: relative;
+  width: 44px;
+  height: 26px;
+  background: var(--superficie-2);
+  border-radius: 999px;
+  transition: background 0.2s;
+}
+.interruptor__trilho::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+.interruptor input:checked + .interruptor__trilho {
+  background: var(--vermelho);
+}
+.interruptor input:checked + .interruptor__trilho::after {
+  transform: translateX(18px);
+}
+.interruptor input:focus-visible + .interruptor__trilho {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ---------- Histórico: estatísticas e linha do tempo ---------- */
+.estatisticas {
+  display: flex;
+  gap: 24px;
+  margin: 16px 0 0;
+}
+.estatisticas dt {
+  color: var(--texto-suave);
+  font-size: 0.78rem;
+}
+.estatisticas dd {
+  margin: 2px 0 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+.acoes-relatorio {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.linha {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0 0 0 22px;
+  list-style: none;
+}
+.linha::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 6px;
+  width: 2px;
+  background: var(--borda);
+}
+.linha__item {
+  position: relative;
+}
+.linha__marcador {
+  position: absolute;
+  top: 18px;
+  left: -22px;
+  width: 14px;
+  height: 14px;
+  background: var(--vermelho);
+  border: 3px solid var(--bg);
+  border-radius: 50%;
+  box-sizing: content-box;
+  margin-left: -3px;
+  margin-top: -3px;
+}
+.linha__cartao {
+  padding: 12px 14px;
+  background: var(--superficie);
+  border-radius: var(--raio);
+}
+.linha__topo {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.linha__acoes {
+  display: flex;
+  gap: 14px;
+}
+.linha__acoes:empty {
+  display: none;
+}
+.linha__cartao .linha__acoes {
+  margin-top: 6px;
+}
+.rodape-relatorio {
+  margin-top: 24px;
+  text-align: center;
+}

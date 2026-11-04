@@ -41,15 +41,16 @@ frontend/
 
 ## Telas
 
-| Tela | Rota | Situação |
+| Tela | Rota | O que faz |
 |---|---|---|
-| T02 · Início | `/` | Pronta |
-| T01 · Cadastro do veículo | `/cadastro` | Em construção |
-| T03 · Novo serviço | `/servico/novo` | Em construção |
-| T04 · Gastos | `/gastos` | Em construção |
-| T05 · Alertas | `/alertas` | Em construção |
-| T06 · Documentos | `/documentos` | Em construção |
-| T07 · Histórico | `/historico` | Em construção |
+| T01 · Cadastro do veículo | `/cadastro` | Cadastra o carro (e edita, se já existir) |
+| T02 · Início | `/` | Veículo, gasto do mês, próximos vencimentos e últimos serviços |
+| T03 · Novo serviço | `/servico/novo` | Registro rápido, com chips de tipo e foto da nota opcional |
+| T04 · Gastos | `/gastos` | Visão mensal e anual, comparativo, gráfico por mês e por categoria |
+| T05 · Alertas | `/alertas` | Revisões por km ou data, com "Marcar como feito" |
+| T06 · Documentos | `/documentos` | IPVA, licenciamento e seguro, com lembrete e "Marcar como pago" |
+| T07 · Histórico | `/historico` | Resumo, linha do tempo, "Gerar PDF" e "Compartilhar link" |
+| Relatório público | `/relatorio/:token` | Visão somente leitura para quem recebeu o link |
 
 ## Identidade visual
 
@@ -59,7 +60,7 @@ As cores ficam em `src/styles/tema.css`, tiradas da logo: preto `#0B0B0B`, verme
 
 ```bash
 npm test              # na raiz roda os testes do back-end e do front-end
-npm --prefix frontend test   # só os do front-end (15 testes)
+npm --prefix frontend test   # só os do front-end (48 testes)
 ```
 
 As telas são testadas com uma API simulada (`src/test/api-falsa.js`), então os testes não dependem do back-end.
