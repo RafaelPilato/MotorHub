@@ -22,10 +22,10 @@ function BoasVindas() {
 }
 
 function InicioDoVeiculo({ veiculoId }) {
-  const { dados: resumo, carregando, erro, recarregar } = useApi(`/api/veiculos/${veiculoId}/resumo`);
+  const { dados: resumo, erro, recarregar } = useApi(`/api/veiculos/${veiculoId}/resumo`);
 
-  if (carregando) return <Estado tipo="carregando" />;
   if (erro) return <Estado tipo="erro" mensagem={erro} aoTentarNovamente={recarregar} />;
+  if (!resumo) return <Estado tipo="carregando" />;
 
   const { veiculo, gasto_mes: gastoMes, proximos_vencimentos: vencimentos, ultimos_servicos: ultimos } = resumo;
 
@@ -43,6 +43,9 @@ function InicioDoVeiculo({ veiculoId }) {
         <div className="veiculo__linha">
           <span className="placa">{veiculo.placa}</span>
           <span className="veiculo__km">{km(veiculo.km_atual)}</span>
+          <Link to="/cadastro" className="link veiculo__editar">
+            Editar
+          </Link>
         </div>
       </section>
 
