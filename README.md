@@ -50,8 +50,8 @@ Um app focado no celular, com foco em simplicidade, que reúne em um só lugar:
 |---|---|---|---|
 | **Fase 1** – Pesquisa de Campo | Apresentação dos achados da pesquisa primária | 20/10 | ✅ Concluída |
 | **Fase 2** – Requisitos e Prototipagem (UI/UX) | Requisitos e protótipo visual das telas | 27/10 | ✅ Concluída |
-| **Fase 3/4** – Desenvolvimento | Aula prática, integração e repositório | 03/11 | ⏳ Pendente |
-| **Fase 3/4** – Desenvolvimento e MVP | MVP funcional, testes locais e documentação | 10/11 | ⏳ Pendente |
+| **Fase 3/4** – Desenvolvimento | Aula prática, integração e repositório | 03/11 | ✅ Concluída |
+| **Fase 3/4** – Desenvolvimento e MVP | MVP funcional, testes locais e documentação | 10/11 | 🔄 Em andamento |
 | **Apresentação Final** | Pitch, demonstração ao vivo, relatório em PDF e link do GitHub | 17/11 | ⏳ Pendente |
 
 ---
@@ -96,13 +96,13 @@ A partir da pesquisa, foram definidos:
 
 ## Escopo do MVP
 
-Prioridade definida a partir da pesquisa de campo:
+Prioridade definida a partir da pesquisa de campo. **Todos os itens abaixo estão implementados:**
 
-- [ ] Cadastro do veículo e registro rápido de serviço
-- [ ] Painel de gastos mensal e anual
-- [ ] Alertas de revisão por km e data
-- [ ] Lembretes de IPVA, licenciamento e seguro
-- [ ] Relatório de histórico exportável para venda
+- [x] Cadastro do veículo e registro rápido de serviço
+- [x] Painel de gastos mensal e anual
+- [x] Alertas de revisão por km e data
+- [x] Lembretes de IPVA, licenciamento e seguro
+- [x] Relatório de histórico exportável para venda
 
 Ficam para **versões futuras**: lançamento do serviço pela oficina, estimativa de próximos gastos, lista de desejos com custo estimado e comparação de preços entre oficinas.
 
@@ -120,6 +120,7 @@ motorhub/
 ├── docs/
 │   ├── fase-1-pesquisa/       # pesquisa de campo (PDF e Markdown)
 │   ├── fase-2-prototipos/     # requisitos e telas do protótipo
+│   ├── guia-de-execucao.md    # passo a passo para rodar o sistema
 │   └── relatorio-final/       # relatório entregue em 17/11
 ├── frontend/
 └── backend/
@@ -129,13 +130,32 @@ motorhub/
 
 ## Tecnologias
 
-> A definir na Fase 3/4 (front-end, back-end e banco de dados).
+| Camada | Tecnologia |
+|---|---|
+| Front-end | React 18, Vite e React Router (interface mobile-first) |
+| Back-end | Node.js e Express (API REST) |
+| Banco de dados | SQLite (`better-sqlite3`) |
+| Upload da foto da nota | Multer |
+| Relatório em PDF | PDFKit |
+| Testes | `node:test` (back-end) e Vitest com Testing Library (front-end) |
 
 ---
 
 ## Como executar localmente
 
-> As instruções de instalação e execução serão adicionadas junto com o desenvolvimento do MVP.
+Pré-requisito: **Node.js 18.11 ou superior**. Na raiz do repositório:
+
+```bash
+npm run install:all   # instala as dependências
+npm run seed          # (opcional) cria dados de exemplo
+npm run dev           # API em http://localhost:3001 e site em http://localhost:5173
+```
+
+Para a demonstração em uma porta só, use `npm run build` e depois `npm start`, e abra http://localhost:3001.
+
+Para rodar os testes: `npm test`.
+
+📄 Guia completo, com solução de problemas e roteiro de demonstração: [`docs/guia-de-execucao.md`](docs/guia-de-execucao.md)
 
 ---
 
