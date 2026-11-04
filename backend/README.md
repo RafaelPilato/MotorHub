@@ -90,6 +90,8 @@ Erros seguem o formato `{ "erro": "mensagem", "campos": { "campo": "detalhe" } }
 | GET | `/api/veiculos/:id/historico` | Resumo e linha do tempo completa do veículo | T07 |
 | POST | `/api/veiculos/:id/relatorio/compartilhar` | Gera o link público do relatório (`token`) | T07 |
 | GET | `/api/relatorio/:token` | Relatório público, para quem recebeu o link | T07 |
+| GET | `/api/veiculos/:id/relatorio/pdf` | Baixa o relatório de histórico em PDF | T07 |
+| GET | `/api/relatorio/:token/pdf` | PDF do relatório compartilhado | T07 |
 
 ### Regras implementadas
 
@@ -98,10 +100,11 @@ Erros seguem o formato `{ "erro": "mensagem", "campos": { "campo": "detalhe" } }
 - **Documentos:** `situacao` é `pago`, `atrasado` (pendente e vencido), `atencao` (pendente e vence em até 30 dias) ou `em_dia`.
 - **Painel de gastos:** todas as 5 categorias aparecem, mesmo zeradas, ordenadas do maior para o menor gasto. `variacao_percentual` é `null` quando o período anterior não tem gastos.
 - **Próximos vencimentos (tela inicial):** junta alertas e documentos pendentes, com os mais urgentes primeiro (máximo de 4).
+- **PDF do relatório:** gerado na hora com `pdfkit` (cabeçalho com a marca, quadros-resumo, tabela de serviços do mais antigo ao mais recente, paginação automática e rodapé numerado).
 - **Link do relatório:** o token é aleatório e difícil de adivinhar. Quem tem o link vê o histórico sem precisar de login.
 
 ## Testes
 
 ```bash
-npm test    # 28 testes automáticos, com banco temporário
+npm test    # 31 testes automáticos, com banco temporário
 ```

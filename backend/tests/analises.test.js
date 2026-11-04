@@ -255,3 +255,39 @@ test('compartilhar relatório: gera link público e rejeita token inválido', as
 
   assert.equal((await api('GET', '/api/relatorio/naoexiste')).status, 404);
 });
+
+// ---------- PDF do relatório (T07) ----------
+
+async function baixarPdf(url) {
+  const res = await fetch(base + url);
+  return { res, buffer: Buffer.from(await res.arrayBuffer()) };
+}
+
+test('PDF do relatório: arquivo válido, com nome do arquivo e tipo corretos', async () => {
+  const { res, buffer } = await baixarPdf(`/api/veiculos/${carro.id}/relatorio/pdf`);
+  assert.equal(res.status, 200);
+  assert.equal(res.headers.get('content-type'), 'application/pdf');
+  assert.match(res.headers.get('content-disposition'), /attachment; filename="historico-ABC-1D23\.pdf"/);
+  assert.equal(buffer.subarray(0, 5).toString(), '%PDF-');
+  assert.ok(buffer.length > 1500);
+});
+
+test('PDF do relatório: muitos serviços ocupam mais de uma página', async () => {
+  const inserir = db.prepare(
+    "INSERT INTO servicos (veiculo_id, data, km, tipo, categoria, valor, oficina) VALUES (?, '2026-05-10', 60000, 'Serviço de teste', 'Outros', 10, 'Oficina')"
+  );
+  for (let i = 0; i < 50; i += 1) inserir.run(outro.id);
+
+  const { buffer } = await baixarPdf(`/api/veiculos/${outro.id}/relatorio/pdf`);
+  const paginas = (buffer.toString('latin1').match(/\/Type \/Page\b(?!s)/g) || []).length;
+  assert.ok(paginas >= 2, `esperava 2 ou mais páginas, veio ${paginas}`);
+});
+
+test('PDF do relatório compartilhado: abre pelo token e rejeita token inválido', async () => {
+  const c = await api('POST', `/api/veiculos/${carro.id}/relatorio/compartilhar`);
+  const { res, buffer } = await baixarPdf(`/api/relatorio/${c.corpo.token}/pdf`);
+  assert.equal(res.status, 200);
+  assert.equal(buffer.subarray(0, 5).toString(), '%PDF-');
+
+  assert.equal((await fetch(`${base}/api/relatorio/naoexiste/pdf`)).status, 404);
+});

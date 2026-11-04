@@ -8,6 +8,7 @@ const { buscarVeiculo } = require('../services/veiculos');
 const { formatarServico } = require('../services/servicos');
 const { calcularAlerta } = require('../services/alertas');
 const { formatarDocumento } = require('../services/documentos');
+const { gerarRelatorioPdf } = require('../services/relatorioPdf');
 
 const router = express.Router();
 
@@ -105,6 +106,27 @@ router.get('/relatorio/:token', (req, res) => {
   if (!link) throw new ErroHttp(404, 'Relatório não encontrado.');
   const veiculo = db.prepare('SELECT * FROM veiculos WHERE id = ?').get(link.veiculo_id);
   res.json({ ...montarHistorico(veiculo), gerado_em: link.criado_em });
+});
+
+// Envia o relatório como arquivo PDF para download.
+function enviarPdf(res, historico, geradoEm) {
+  const nomeArquivo = `historico-${historico.veiculo.placa}.pdf`;
+  res.setHeader('Content-Type', 'application/pdf');
+  res.setHeader('Content-Disposition', `attachment; filename="${nomeArquivo}"`);
+  gerarRelatorioPdf(historico, geradoEm).pipe(res);
+}
+
+// "Gerar PDF" (T07): relatório do próprio usuário.
+router.get('/veiculos/:veiculoId/relatorio/pdf', (req, res) => {
+  enviarPdf(res, montarHistorico(buscarVeiculo(req.params.veiculoId)), new Date());
+});
+
+// PDF do relatório compartilhado (para quem recebeu o link).
+router.get('/relatorio/:token/pdf', (req, res) => {
+  const link = db.prepare('SELECT * FROM compartilhamentos WHERE token = ?').get(req.params.token);
+  if (!link) throw new ErroHttp(404, 'Relatório não encontrado.');
+  const veiculo = db.prepare('SELECT * FROM veiculos WHERE id = ?').get(link.veiculo_id);
+  enviarPdf(res, montarHistorico(veiculo), new Date());
 });
 
 module.exports = router;
