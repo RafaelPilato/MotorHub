@@ -51,8 +51,8 @@ Um app focado no celular, com foco em simplicidade, que reúne em um só lugar:
 | **Fase 1** – Pesquisa de Campo | Apresentação dos achados da pesquisa primária | 20/10 | ✅ Concluída |
 | **Fase 2** – Requisitos e Prototipagem (UI/UX) | Requisitos e protótipo visual das telas | 27/10 | ✅ Concluída |
 | **Fase 3/4** – Desenvolvimento | Aula prática, integração e repositório | 03/11 | ✅ Concluída |
-| **Fase 3/4** – Desenvolvimento e MVP | MVP funcional, testes locais e documentação | 10/11 | 🔄 Em andamento |
-| **Apresentação Final** | Pitch, demonstração ao vivo, relatório em PDF e link do GitHub | 17/11 | ⏳ Pendente |
+| **Fase 3/4** – Desenvolvimento e MVP | MVP funcional, testes locais e documentação | 10/11 | ✅ Concluída |
+| **Apresentação Final** | Pitch, demonstração ao vivo, relatório em PDF e link do GitHub | 17/11 | ✅ OK |
 
 ---
 

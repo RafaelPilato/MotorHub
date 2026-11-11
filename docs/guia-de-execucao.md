@@ -1,6 +1,6 @@
 # Guia de execução do MotorHub
 
-Passo a passo para rodar o sistema **localmente**, do zero. É o guia pedido pelo enunciado ("Repositório GitHub & Guia de Execução").
+Passo a passo para rodar o sistema **localmente**, do zero.
 
 ## 1. Pré-requisitos
 
@@ -84,16 +84,7 @@ Roda os testes do back-end (31) e do front-end (48). Os testes usam banco tempor
 | "Não foi possível conectar ao servidor" no site | A API não está rodando | Rode `npm run dev` (ou `npm start`) na raiz |
 | Site abre mas está desatualizado (modo B) | O build é antigo | Rode `npm run build` e reinicie o `npm start` |
 
-## 9. Roteiro sugerido para a demonstração (cerca de 5 minutos)
-
-1. **Problema:** abra a tela **Início** (com o seed) e mostre o carro, o gasto do mês e os próximos vencimentos.
-2. **Registro rápido:** toque em **+ Registrar serviço**, escolha "Troca de óleo", informe o valor e anexe a foto de uma nota. Salve.
-3. **Reação do sistema:** volte ao Início (o gasto subiu) e abra **Alertas** (o alerta do óleo reiniciou).
-4. **Controle de gastos:** abra **Gastos** e mostre o total do ano, o gráfico mês a mês e as categorias.
-5. **Documentos:** abra **Documentos**, mostre o licenciamento em "Atenção" e marque um lembrete como pago.
-6. **Valorização na revenda:** abra **Histórico**, clique em **Gerar PDF** e depois em **Compartilhar link**. Abra o link em outra aba para mostrar a visão do comprador.
-
-## 10. Limitações conhecidas do MVP
+## 9. Limitações do MVP
 
 - **Sem login:** o MVP é de uso local e trabalha com um único usuário e um veículo (o primeiro cadastrado).
 - **Link compartilhado:** funciona para quem acessa o mesmo servidor. Em um computador local, o link só abre nesse computador ou na mesma rede, usando o IP dele no lugar de `localhost`.

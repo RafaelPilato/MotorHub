@@ -4,14 +4,14 @@
   "private": true,
   "description": "MotorHub – prontuário digital do veículo (Projeto Integrador, Design Profissional)",
   "scripts": {
-  "install:all": "npm install && npm --prefix backend install && npm --prefix frontend install",
-  "seed": "npm --prefix backend run seed",
-  "dev": "concurrently -n api,site -c red,white \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\"",
-  "build": "npm --prefix frontend run build",
-  "start": "npm --prefix backend start",
-  "test": "npm --prefix backend test && npm --prefix frontend test"
-},
-"devDependencies": {
-  "concurrently": "^9.0.0"
-}
+    "install:all": "npm install && npm --prefix backend install && npm --prefix frontend install",
+    "seed": "npm --prefix backend run seed",
+    "dev": "concurrently -n api,site -c red,white \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\"",
+    "build": "npm --prefix frontend run build",
+    "start": "npm --prefix backend start",
+    "test": "npm --prefix backend test && npm --prefix frontend test"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
 }
